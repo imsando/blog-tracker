@@ -20,6 +20,11 @@ public record Blogger(
         /**
          * 이메일
          * */
-        String email
+        String email,
+
+        /**
+         * 블로그 주소
+         * */
+        String blogUrl
 ) {
 }
