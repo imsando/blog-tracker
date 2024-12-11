@@ -33,6 +33,7 @@ public class MailConfig {
         mailSender.setUsername(username);
         mailSender.setPassword(password);
 
+        //TODO : 리펙토링 필요
         Properties props = new Properties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");

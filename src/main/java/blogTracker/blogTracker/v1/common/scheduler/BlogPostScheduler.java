@@ -7,11 +7,12 @@ import blogTracker.blogTracker.v1.domain.sender.platform.VelogService;
 import blogTracker.blogTracker.v1.domain.sender.service.SenderBusinessService;
 import blogTracker.blogTracker.v1.entity.Blogger;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class BlogPostScheduler {
@@ -21,8 +22,7 @@ public class BlogPostScheduler {
     private final TistoryService tistoryService;
     private final SenderBusinessService senderBusinessService;
 
-    // TODO : 테스트를 위한 2분 설정 -> 테스트 이후 2주 변경 예정
-    @Scheduled(cron = "0 0/2 * * * *") // 2분마다 실행
+    @Scheduled(cron = "0 0/2 * * * *") // NOTE : 테스트 전송을 확인하기 위해 2분마다 실행 -> 테스트 이후에는 2주로 변경 예정
     public void checkForBlogPosts() {
         bloggerRepository.findAll()
                 .flatMap(this::checkAndSendAlert)
@@ -30,6 +30,7 @@ public class BlogPostScheduler {
     }
 
     private Mono<Void> checkAndSendAlert(Blogger blogger) {
+        log.debug("Checking for new posts from: {}", blogger.blogUrl());
         return hasPosted(blogger)
                 .filter(posted -> !posted)
                 .flatMap(unused -> senderBusinessService.sendAlertEmail(blogger))
