@@ -1,0 +1,54 @@
+name: blog-tracker
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. JDK 설정
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # 3. Gradle 빌드
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Clean and build with Gradle
+        run: ./gradlew clean build
+
+      # 4. 빌드된 파일 업로드
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: blogTracker
+          path: build/libs/*.jar
+
+  deploy:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 빌드된 파일 다운로드
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: blogTracker
+          path: build/libs/
+
+      # 2. EC2에 배포
+      - name: Deploy to EC2
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          scp -i private_key.pem -o StrictHostKeyChecking=no build/libs/*.jar ec2-user@${{ secrets.EC2_IP }}:/home/ec2-user/app.jar
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_IP }} "pgrep java | xargs kill -9 || true; nohup java -jar /home/ec2-user/app.jar --spring.data.mongodb.uri=${{ secrets.MONGO_URL }} > blog.log 2>&1 &"
+          rm -f private_key.pem
