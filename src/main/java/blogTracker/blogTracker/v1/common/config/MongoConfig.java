@@ -13,6 +13,10 @@ import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.ConnectionString;
+
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableReactiveMongoRepositories(basePackages = "blogTracker.blogTracker", reactiveMongoTemplateRef = "simpleReactiveMongoTemplate")
@@ -26,7 +30,16 @@ public class MongoConfig {
 
     @Bean
     public MongoClient mongoClient() {
-        return MongoClients.create(uri);
+        ConnectionString connectionString = new ConnectionString(uri);
+
+        MongoClientSettings settings = MongoClientSettings.builder()
+                .applyConnectionString(connectionString)
+                .applyToSslSettings(builder -> builder.enabled(true))
+                .applyToSocketSettings(builder ->
+                        builder.connectTimeout(10000, TimeUnit.MILLISECONDS))
+                .build();
+
+        return MongoClients.create(settings);
     }
 
     // TODO : 리펙토링 필요
@@ -48,4 +61,5 @@ public class MongoConfig {
                                                              MappingMongoConverter reactiveMappingMongoConverter) {
         return new ReactiveMongoTemplate(reactiveMongoDatabaseFactory, reactiveMappingMongoConverter);
     }
+
 }
