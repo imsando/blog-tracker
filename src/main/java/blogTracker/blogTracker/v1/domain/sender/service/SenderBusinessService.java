@@ -26,7 +26,7 @@ public class SenderBusinessService {
                 message.setSubject("블로그 글 등록 알림");
                 message.setText(String.format("안녕하세요, %s님! 글을 등록하셔야 합니다 왜 안함 올려야지", blogger.name()));
                 mailSender.send(message);
-                log.info("Alert email sent to {}", blogger.email());
+                log.info("이메일 로직 로그 {}", blogger.email());
             } catch (Exception e) {
                 log.error("전송에 실패한 이메일 주소 확인하자 {},  에러메시지 : {}", blogger.email(), e.getMessage());
                 throw new CustomException(ErrorCodes.BAD_REQUEST);

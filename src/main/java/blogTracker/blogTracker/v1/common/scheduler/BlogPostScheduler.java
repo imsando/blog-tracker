@@ -22,7 +22,7 @@ public class BlogPostScheduler {
     private final TistoryService tistoryService;
     private final SenderBusinessService senderBusinessService;
 
-    @Scheduled(cron = "0 0/2 * * * *") // NOTE : 테스트 전송을 확인하기 위해 2분마다 실행 -> 테스트 이후에는 2주로 변경 예정
+    @Scheduled(cron = "0 0/1 * * * *") // NOTE : 테스트 전송을 확인하기 위해 2분마다 실행 -> 테스트 이후에는 2주로 변경 예정
     public void checkForBlogPosts() {
         bloggerRepository.findAll()
                 .flatMap(this::checkAndSendAlert)

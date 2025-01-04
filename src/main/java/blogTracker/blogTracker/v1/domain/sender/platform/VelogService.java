@@ -1,16 +1,18 @@
 package blogTracker.blogTracker.v1.domain.sender.platform;
 
-import blogTracker.blogTracker.v1.common.enums.ErrorCodes;
-import blogTracker.blogTracker.v1.common.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.StringReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,34 +20,56 @@ import java.time.format.DateTimeFormatter;
 @Service
 @RequiredArgsConstructor
 public class VelogService {
+    private final WebClient webClient;
 
     public Mono<Boolean> checkRecentPosts(String blogUrl) {
-        return Mono.fromCallable(() -> {
-            try {
-                Document doc = Jsoup.connect(blogUrl).get();
-                Elements posts = doc.select(".sc-16qplb7-0"); //1. 벨로그의 게시물 CSS 선택자
-                if (posts.isEmpty()) {
-                    return false;
-                }
-                String latestPostDate = posts.first().select(".date").text();
-                LocalDateTime latestDate = parseVelogDate(latestPostDate);
-                return latestDate.isAfter(LocalDateTime.now().minusMinutes(2));
-            } catch (Exception e) {
-                throw new CustomException(ErrorCodes.BAD_REQUEST);
-            }
-        }).subscribeOn(Schedulers.boundedElastic());
+        String rssUrl = blogUrl + "/rss";
+
+        return webClient.get()
+                .uri(rssUrl)
+                .retrieve()
+                .bodyToMono(String.class)
+                .map(this::parseAndCheckLastPostDate)
+                .onErrorResume(e -> {
+                    log.error("Error checking Velog posts: {}", e.getMessage());
+                    return Mono.just(false);
+                });
     }
 
-    private LocalDateTime parseVelogDate(String dateText) {
-        //1. 벨로그의 날짜 형식에 맞게 파싱
-        if (dateText.contains("분 전")) {
-            int minutes = Integer.parseInt(dateText.replace("분 전", "").trim());
-            return LocalDateTime.now().minusMinutes(minutes);
-        } else if (dateText.contains("시간 전")) {
-            int hours = Integer.parseInt(dateText.replace("시간 전", "").trim());
-            return LocalDateTime.now().minusHours(hours);
+    private boolean parseAndCheckLastPostDate(String xmlContent) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+            factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+            factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(new InputSource(new StringReader(xmlContent)));
+
+            NodeList items = doc.getElementsByTagName("item");
+            if (items.getLength() > 0) {
+                Element firstItem = (Element) items.item(0);
+                NodeList pubDateList = firstItem.getElementsByTagName("pubDate");
+
+                if (pubDateList.getLength() > 0) {
+                    String pubDate = pubDateList.item(0).getTextContent();
+
+                    try {
+                        LocalDateTime postDate = LocalDateTime.parse(
+                                pubDate.trim().replace(" +0000", ""),
+                                DateTimeFormatter.RFC_1123_DATE_TIME
+                        );
+                        return postDate.isAfter(LocalDateTime.now().minusWeeks(2));
+                    } catch (Exception e) {
+                        log.error("Date parsing error: {}", pubDate, e);
+                        return false;
+                    }
+                }
+            }
+            return false;
+        } catch (Exception e) {
+            log.error("Error parsing RSS: {}", e.getMessage());
+            return false;
         }
-        //2. 그 외 다른 형식은 기본 포맷으로 처리
-        return LocalDateTime.parse(dateText, DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     }
 }
