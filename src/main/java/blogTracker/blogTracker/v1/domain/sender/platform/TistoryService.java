@@ -87,7 +87,7 @@ public class TistoryService {
             return false;
         }
     }
-    // NOTE : 2주 이내에 작성된 글인지 확인
+
     private boolean isRecent(String pubDate) {
         try {
             LocalDateTime postDate = LocalDateTime.parse(
