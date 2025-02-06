@@ -22,6 +22,7 @@ public class BlogPostScheduler {
     private final SenderBusinessService senderBusinessService;
 
     @Scheduled(cron = "0 0/1 * * * *") // every 1 minute
+
     public void checkForBlogPosts() {
         log.info("============================================= 주기가 시작되었습니다. =============================================");
         bloggerRepository.findAll()

@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 @Service
 @RequiredArgsConstructor
 public class VelogService {
-    private final WebClient webClient;
+    private final WebClient webClient;  // HTTP 요청을 위한 WebClient 주입
 
     public Mono<Boolean> checkRecentPosts(String blogUrl) {
         return Mono.fromCallable(() -> {
@@ -34,21 +34,11 @@ public class VelogService {
                 }
 
                 Element latestPost = posts.first();
-                if (latestPost == null) {
-                    log.warn("Failed to get first post element for blog URL: {}", blogUrl);
-                    return true; // first()가 null을 반환하면 안전하게 알림을 보냄
-                }
+                String latestPostDate = latestPost.select(".date").text();
 
-                Elements dateElements = latestPost.select(".date");
-                if (dateElements.isEmpty()) {
-                    log.warn("Date element not found in the latest post for blog URL: {}", blogUrl);
-                    return true; // 날짜 요소를 찾을 수 없으면 안전하게 알림을 보냄
-                }
-
-                String latestPostDate = dateElements.text();
                 if (latestPostDate.isEmpty()) {
-                    log.warn("Date text is empty in the latest post for blog URL: {}", blogUrl);
-                    return true; // 날짜 텍스트가 비어있으면 안전하게 알림을 보냄
+                    log.warn("Date not found in the latest post for blog URL: {}", blogUrl);
+                    return true; // 날짜를 찾을 수 없으면 안전하게 알림을 보냄
                 }
 
                 LocalDateTime latestDate = parseVelogDate(latestPostDate);
