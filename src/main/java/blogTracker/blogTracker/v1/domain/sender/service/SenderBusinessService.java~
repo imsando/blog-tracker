@@ -24,7 +24,7 @@ public class SenderBusinessService {
                 SimpleMailMessage message = new SimpleMailMessage();
                 message.setTo(blogger.email());
                 message.setSubject("블로그 글 등록 알림");
-                message.setText(String.format("안녕하세요, %s님! 글을 등록하셔야 합니다 왜 안함 올려야지 (관련 블로그 URL : %s)", blogger.name(), blogger.blogUrl()));
+                message.setText(String.format("안녕하세요, %s님! 글을 등록하셔야 합니다 왜 안함 올려야지", blogger.name()));
                 mailSender.send(message);
                 log.info("이메일 로직 로그 {}", blogger.email());
             } catch (Exception e) {
