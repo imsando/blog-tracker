@@ -80,7 +80,7 @@ public class VelogService {
                         boolean isNewerThanTwoMinutes = lastPostDate.isAfter(twoMinutesAgo);
 
                         log.info("최근 게시물 작성 시간: {}, 2분 이내 작성 여부: {}", lastPostDate, isNewerThanTwoMinutes);
-                        sink.next(!isNewerThanTwoMinutes);  // 2분 이내 게시물이 없으면 true (알림 발송)
+                        sink.next(isNewerThanTwoMinutes);  // 2분 이내 게시물이 없으면 true (알림 발송)
 
                     } catch (Exception e) {
                         log.error("RSS 처리 중 에러 발생: {}, 원본 메시지: {}", e.getClass().getName(), e.getMessage());
