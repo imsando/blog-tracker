@@ -25,7 +25,6 @@ public class TistoryService {
 
     public Mono<Boolean> checkRecentPosts(String blogUrl) {
         String rssUrl = convertToRssUrl(blogUrl);
-        log.debug("===================================================");
         log.info("체크할 RSS URL: {}", rssUrl);
 
         return webClient.get()

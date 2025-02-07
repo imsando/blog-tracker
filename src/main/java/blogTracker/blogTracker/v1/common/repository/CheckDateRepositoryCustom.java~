@@ -1,0 +1,14 @@
+package blogTracker.blogTracker.v1.common.repository;
+
+import blogTracker.blogTracker.v1.entity.CheckDate;
+import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Repository
+public interface CheckDateRepositoryCustom {
+    Mono<List<CheckDate>> findByScheduledDateAndChecked(LocalDate date, boolean checked);
+    Mono<Void> updateCompleted(LocalDate date);
+}
