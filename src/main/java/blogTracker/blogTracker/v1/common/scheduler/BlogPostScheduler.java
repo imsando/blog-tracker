@@ -2,6 +2,7 @@ package blogTracker.blogTracker.v1.common.scheduler;
 
 import blogTracker.blogTracker.v1.common.repository.BloggerRepository;
 import blogTracker.blogTracker.v1.common.repository.CheckDateRepository;
+import blogTracker.blogTracker.v1.domain.blogger.service.BlogService;
 import blogTracker.blogTracker.v1.domain.sender.SenderProcessor;
 import blogTracker.blogTracker.v1.domain.sender.platform.TistoryService;
 import blogTracker.blogTracker.v1.domain.sender.platform.VelogService;
@@ -23,6 +24,7 @@ public class BlogPostScheduler {
     private final BloggerRepository bloggerRepository;
     private final VelogService velogService;
     private final TistoryService tistoryService;
+    private final BlogService blogService;
     private final SenderBusinessService senderBusinessService;
     private final CheckDateRepository checkDateRepository;
 
@@ -42,7 +44,7 @@ public class BlogPostScheduler {
 //    }
 
     //    @Scheduled(cron = "0 0 0 * * *") // 매일 자정에 실행
-    @Scheduled(cron = "0 54 15 * * *")
+    @Scheduled(cron = "00 6 17 * * *")
     public void checkForBlogPosts() {
         LocalDate today = LocalDate.now();
         log.info("Scheduler started for date: {}", today);
@@ -98,11 +100,12 @@ public class BlogPostScheduler {
         log.info("Checking blogger platform: {}", blogger);
         if (blogger.blogUrl().contains("velog.io")) {
             log.info("Processing Velog blog: {}", blogger.blogUrl());
-            return velogService.checkRecentPosts(blogger.blogUrl())
+            return blogService.checkRecentPosts(blogger.blogUrl())
                     .doOnNext(result -> log.info("Velog check result for {}: {}", blogger.blogUrl(), result));
+
         } else if (blogger.blogUrl().contains("tistory.com")) {
             log.info("Processing Tistory blog: {}", blogger.blogUrl());
-            return tistoryService.checkRecentPosts(blogger.blogUrl())
+            return blogService.checkRecentPosts(blogger.blogUrl())
                     .doOnNext(result -> log.info("Tistory check result for {}: {}", blogger.blogUrl(), result));
         }
         log.warn("Unsupported blog platform: {}", blogger.blogUrl());

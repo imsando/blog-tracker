@@ -13,6 +13,8 @@ import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -51,7 +53,7 @@ public class VelogService {
 
                         if (!itemMatcher.find()) {
                             log.info("게시물이 없는 블로그입니다: {}", rssUrl);
-                            sink.next(true); // 게시물이 없으면 알림 발송
+                            sink.next(false); // 게시물이 없으면 false 반환
                             return;
                         }
 
@@ -69,18 +71,17 @@ public class VelogService {
                         String latestPostDate = dateMatcher.group(1).trim();
                         log.debug("파싱할 게시물 날짜: {}", latestPostDate);
 
+                        // pubDate를 UTC 기준으로 변환
                         SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
                         Date parsedDate = sdf.parse(latestPostDate);
-                        LocalDateTime lastPostDate = LocalDateTime.ofInstant(
-                                parsedDate.toInstant(),
-                                ZoneId.systemDefault()
-                        );
+                        ZonedDateTime postZonedDateTime = parsedDate.toInstant().atZone(ZoneOffset.UTC);
 
-                        LocalDateTime twoMinutesAgo = LocalDateTime.now().minusMinutes(2);
-                        boolean isNewerThanTwoMinutes = lastPostDate.isAfter(twoMinutesAgo);
+                        // 24시간 전과 비교 (UTC 기준)
+                        ZonedDateTime oneDayAgo = ZonedDateTime.now(ZoneOffset.UTC).minusDays(13);
+                        boolean isRecentPost = postZonedDateTime.isAfter(oneDayAgo);
 
-                        log.info("최근 게시물 작성 시간: {}, 2분 이내 작성 여부: {}", lastPostDate, isNewerThanTwoMinutes);
-                        sink.next(isNewerThanTwoMinutes);  // 2분 이내 게시물이 없으면 true (알림 발송)
+                        log.info("최근 게시물 작성 시간(UTC): {}, 1일 이내 작성 여부: {}", postZonedDateTime, isRecentPost);
+                        sink.next(isRecentPost);
 
                     } catch (Exception e) {
                         log.error("RSS 처리 중 에러 발생: {}, 원본 메시지: {}", e.getClass().getName(), e.getMessage());
@@ -96,7 +97,7 @@ public class VelogService {
                 url = "https://" + url;
             }
 
-            // velog.io/@username 형식을 rss 주소로 변환
+            // velog.io/@username 형식을 RSS 주소로 변환
             URI uri = new URI(url);
             String host = uri.getHost();
 

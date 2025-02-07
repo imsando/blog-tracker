@@ -1,4 +1,4 @@
-package blogTracker.blogTracker.v1.domain.sender.platform;
+package blogTracker.blogTracker.v1.domain.blogger.service;
 
 import blogTracker.blogTracker.v1.common.enums.ErrorCodes;
 import blogTracker.blogTracker.v1.common.exception.CustomException;
@@ -9,21 +9,22 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TistoryService {
+public class BlogService {
     private final WebClient webClient;
 
     public Mono<Boolean> checkRecentPosts(String blogUrl) {
+        int days = 13;
         String rssUrl = convertToRssUrl(blogUrl);
         log.info("체크할 RSS URL: {}", rssUrl);
 
@@ -44,31 +45,34 @@ public class TistoryService {
                                 .replaceAll("&(?!(?:amp|lt|gt|apos|quot);)", "&amp;")
                                 .replaceAll("]]>", "]]&gt;");
 
-                        Pattern pattern = Pattern.compile("<pubDate>([^<]+)</pubDate>");
-                        Matcher matcher = pattern.matcher(cleanedContent);
+                        // 모든 <pubDate> 찾기
+                        Pattern datePattern = Pattern.compile("<pubDate>([^<]+)</pubDate>");
+                        Matcher dateMatcher = datePattern.matcher(cleanedContent);
 
-                        if (!matcher.find()) {
-                            log.error("RSS에서 pubDate를 찾을 수 없습니다.");
-                            sink.error(new CustomException(ErrorCodes.BAD_REQUEST));
+                        List<LocalDateTime> postDates = new ArrayList<>();
+
+                        while (dateMatcher.find()) {
+                            String postDateStr = dateMatcher.group(1).trim();
+                            SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
+                            Date parsedDate = sdf.parse(postDateStr);
+                            LocalDateTime postDate = LocalDateTime.ofInstant(parsedDate.toInstant(), ZoneId.systemDefault());
+                            postDates.add(postDate);
+                        }
+
+                        if (postDates.isEmpty()) {
+                            log.info("RSS에서 게시물의 pubDate를 찾을 수 없습니다.");
+                            sink.next(false);
                             return;
                         }
 
-                        String latestPostDate = matcher.group(1).trim();
-                        log.debug("파싱할 날짜: {}", latestPostDate);
+                        // 가장 최신 글의 날짜 찾기
+                        LocalDateTime latestPostDate = Collections.max(postDates);
 
-                        // 날짜 파싱을 SimpleDateFormat으로 변경
-                        SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
-                        Date parsedDate = sdf.parse(latestPostDate);
-                        LocalDateTime latestDate = LocalDateTime.ofInstant(
-                                parsedDate.toInstant(),
-                                ZoneId.systemDefault()
-                        );
+                        LocalDateTime checkTime = LocalDateTime.now().minusDays(days);
+                        boolean isRecentPost = latestPostDate.isAfter(checkTime);
 
-                        LocalDateTime twoMinutesAgo = LocalDateTime.now().minusMinutes(2);
-                        boolean isNewerThanTwoMinutes = latestDate.isAfter(twoMinutesAgo);
-
-                        log.info("최근 포스팅 시간: {}, 2분 이내 포스팅 여부: {}", latestDate, isNewerThanTwoMinutes);
-                        sink.next(isNewerThanTwoMinutes);  // 2분 이내 포스팅이 없으면 true (알림 발송)
+                        log.info("가장 최신 게시물 작성 시간: {}, {}일 이내 작성 여부: {}", latestPostDate, days, isRecentPost);
+                        sink.next(isRecentPost);
 
                     } catch (Exception e) {
                         log.error("RSS 처리 중 에러 발생: {}, 원본 메시지: {}", e.getClass().getName(), e.getMessage());
@@ -84,11 +88,24 @@ public class TistoryService {
                 url = "https://" + url;
             }
 
-            if (url.endsWith("/rss")) {
-                return url;
+            // Velog의 RSS 변환
+            URI uri = new URI(url);
+            String host = uri.getHost();
+
+            if (host != null && host.equals("velog.io")) {
+                String path = uri.getPath();
+                if (path.startsWith("/@")) {
+                    String username = path.substring(2);
+                    return "https://v2.velog.io/rss/" + username;
+                }
             }
 
-            return url.replaceAll("/+$", "") + "/rss";
+            // Tistory의 RSS 변환
+            if (!url.endsWith("/rss")) {
+                return url.replaceAll("/+$", "") + "/rss";
+            }
+
+            return url;
 
         } catch (Exception e) {
             log.error("URL 변환 중 에러 발생: {}", e.getMessage());

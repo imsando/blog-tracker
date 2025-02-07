@@ -48,16 +48,20 @@ public class TistoryService {
                         Pattern pattern = Pattern.compile("<pubDate>([^<]+)</pubDate>");
                         Matcher matcher = pattern.matcher(cleanedContent);
 
-                        if (!matcher.find()) {
+                        String latestPostDate = null;
+                        while (matcher.find()) {
+                            latestPostDate = matcher.group(1).trim();  // 최신 pubDate 가져오기
+                        }
+
+                        if (latestPostDate == null) {
                             log.error("RSS에서 pubDate를 찾을 수 없습니다.");
                             sink.error(new CustomException(ErrorCodes.BAD_REQUEST));
                             return;
                         }
 
-                        String latestPostDate = matcher.group(1).trim();
                         log.debug("파싱할 날짜: {}", latestPostDate);
 
-                        // 날짜 파싱을 SimpleDateFormat으로 변경
+                        // 날짜 파싱을 SimpleDateFormat으로 처리
                         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
                         Date parsedDate = sdf.parse(latestPostDate);
                         LocalDateTime latestDate = LocalDateTime.ofInstant(
@@ -65,11 +69,11 @@ public class TistoryService {
                                 ZoneId.systemDefault()
                         );
 
-                        LocalDateTime twoMinutesAgo = LocalDateTime.now().minusMinutes(2);
-                        boolean isNewerThanTwoMinutes = latestDate.isAfter(twoMinutesAgo);
+                        LocalDateTime checkTime = LocalDateTime.now().minusDays(13);  // 24시간 전 기준
+                        boolean isRecentPost = latestDate.isAfter(checkTime);        // 24시간 내 포스팅 여부
 
-                        log.info("최근 포스팅 시간: {}, 2분 이내 포스팅 여부: {}", latestDate, isNewerThanTwoMinutes);
-                        sink.next(isNewerThanTwoMinutes);  // 2분 이내 포스팅이 없으면 true (알림 발송)
+                        log.info("최근 포스팅 시간: {}, 24시간 내 포스팅 여부: {}", latestDate, isRecentPost);
+                        sink.next(isRecentPost);
 
                     } catch (Exception e) {
                         log.error("RSS 처리 중 에러 발생: {}, 원본 메시지: {}", e.getClass().getName(), e.getMessage());
