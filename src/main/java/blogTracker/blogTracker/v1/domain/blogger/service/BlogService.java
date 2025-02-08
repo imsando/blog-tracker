@@ -24,7 +24,7 @@ public class BlogService {
     private final WebClient webClient;
 
     public Mono<Boolean> checkRecentPosts(String blogUrl) {
-        int days = 1;
+        int days = 13;
         String rssUrl = convertToRssUrl(blogUrl);
         log.debug("체크할 RSS URL : {}", rssUrl);
 
