@@ -10,7 +10,7 @@
 
 ### 🔖 **기술스택**
 
-- java 21, spring webFlux, spring mail, jsoup, gradle
+- java 21, spring webFlux, spring mail, RSS, gradle
 - AWS ec2, github actions, MongoDB
 
 <br>
