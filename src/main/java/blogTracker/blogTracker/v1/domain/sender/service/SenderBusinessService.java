@@ -20,7 +20,6 @@ public class SenderBusinessService {
     public Mono<Void> sendAlertEmail(Blogger blogger) {
         return Mono.fromRunnable(() -> {
             try {
-                log.debug("Sending alert email to: {}", blogger.email());
                 SimpleMailMessage message = new SimpleMailMessage();
                 message.setTo(blogger.email());
                 message.setSubject("블로그 글 등록 알림");
@@ -31,6 +30,6 @@ public class SenderBusinessService {
                 log.error("전송에 실패한 이메일 주소 확인하자 {},  에러메시지 : {}", blogger.email(), e.getMessage());
                 throw new CustomException(ErrorCodes.BAD_REQUEST);
             }
-        }).then(); // 명시적으로 Mono<Void> 반환
+        }).then();
     }
 }

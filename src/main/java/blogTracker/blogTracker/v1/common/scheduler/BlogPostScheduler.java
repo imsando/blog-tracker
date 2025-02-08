@@ -49,12 +49,12 @@ public class BlogPostScheduler {
 
         checkDateRepository.findByScheduledDateAndChecked(today, false)
                 .doOnNext(checkDate -> {
-                    log.info("Found check date document: {}", checkDate);
-                    log.info("Document date: {}, Today: {}, Equals: {}",
+                    log.debug("checkDate : {}", checkDate);
+                    log.debug("date: {}, Today: {}, Equals: {}",
                             checkDate.checkDate(), today, checkDate.checkDate().equals(today));
                 })
                 .switchIfEmpty(Mono.defer(() -> {
-                    log.info("오늘은 검사 날짜가 아닙니다: {}", today);
+                    log.info("오늘은 검사 날짜가 아닙니다 : {}", today);
                     return Mono.empty();
                 }))
                 .flatMapMany(checkDate -> {
@@ -86,26 +86,24 @@ public class BlogPostScheduler {
     private Mono<Void> checkAndSendAlert(Blogger blogger) {
         log.info("blogger.blogUrl() 확인 : {}", blogger.blogUrl());
         return hasPosted(blogger)
-                .doOnNext(posted -> log.info("결과 {}: {}", blogger.blogUrl(), posted))
+                .doOnNext(posted -> log.info("결과 {} : {}", blogger.blogUrl(), posted))
                 .filter(posted -> !posted)
-                .doOnNext(unused -> log.info("Sending alert for {}", blogger.blogUrl()))
+                .doOnNext(unused -> log.info("blogUrl {}", blogger.blogUrl()))
                 .flatMap(unused -> senderBusinessService.sendAlertEmail(blogger))
-                .doOnError(error -> log.error("Error in checkAndSendAlert for {}: ", blogger.blogUrl(), error))
+                .doOnError(error -> log.error("error {}: ", blogger.blogUrl(), error))
                 .then();
     }
 
     private Mono<Boolean> hasPosted(Blogger blogger) {
-        log.info("Checking blogger platform: {}", blogger);
+        log.debug("포스팅 여부 확인중인 블로그 : {}", blogger);
         if (blogger.blogUrl().contains("velog.io")) {
-            log.info("Processing Velog blog: {}", blogger.blogUrl());
             return velogService.checkRecentPosts(blogger.blogUrl())
-                    .doOnNext(result -> log.info("Velog check result for {}: {}", blogger.blogUrl(), result));
+                    .doOnNext(result -> log.info("Velog {}: {}", blogger.blogUrl(), result));
         } else if (blogger.blogUrl().contains("tistory.com")) {
-            log.info("Processing Tistory blog: {}", blogger.blogUrl());
             return tistoryService.checkRecentPosts(blogger.blogUrl())
-                    .doOnNext(result -> log.info("Tistory check result for {}: {}", blogger.blogUrl(), result));
+                    .doOnNext(result -> log.info("Tistory {}: {}", blogger.blogUrl(), result));
         }
-        log.warn("Unsupported blog platform: {}", blogger.blogUrl());
+        log.warn("지원하지 않는 플랫폼을 사용한 블로그 Url : {}", blogger.blogUrl());
         return Mono.just(false);
     }
 }
