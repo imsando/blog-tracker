@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCodes {
     //400
     BAD_REQUEST(HttpStatus.BAD_REQUEST.value(), "잘못된 요청입니다."),
+    RSS_CONVERSION_ERROR(HttpStatus.BAD_REQUEST.value(), "RSS 변환 중 오류가 발생했습니다."),
 
     //500
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "서버 내부 오류입니다.");

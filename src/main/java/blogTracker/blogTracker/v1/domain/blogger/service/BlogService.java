@@ -24,9 +24,9 @@ public class BlogService {
     private final WebClient webClient;
 
     public Mono<Boolean> checkRecentPosts(String blogUrl) {
-        int days = 13;
+        int days = 1;
         String rssUrl = convertToRssUrl(blogUrl);
-        log.info("체크할 RSS URL: {}", rssUrl);
+        log.debug("체크할 RSS URL : {}", rssUrl);
 
         return webClient.get()
                 .uri(rssUrl)
@@ -72,7 +72,7 @@ public class BlogService {
                         boolean isRecentPost = latestPostDate.isAfter(checkTime);
 
                         log.info("가장 최신 게시물 작성 시간: {}, {}일 이내 작성 여부: {}", latestPostDate, days, isRecentPost);
-                        sink.next(isRecentPost);
+                        sink.next(!isRecentPost);
 
                     } catch (Exception e) {
                         log.error("RSS 처리 중 에러 발생: {}, 원본 메시지: {}", e.getClass().getName(), e.getMessage());
@@ -88,7 +88,7 @@ public class BlogService {
                 url = "https://" + url;
             }
 
-            // Velog의 RSS 변환
+            // Velog RSS 변환
             URI uri = new URI(url);
             String host = uri.getHost();
 
@@ -100,7 +100,7 @@ public class BlogService {
                 }
             }
 
-            // Tistory의 RSS 변환
+            // Tistory RSS 변환
             if (!url.endsWith("/rss")) {
                 return url.replaceAll("/+$", "") + "/rss";
             }
@@ -108,8 +108,8 @@ public class BlogService {
             return url;
 
         } catch (Exception e) {
-            log.error("URL 변환 중 에러 발생: {}", e.getMessage());
-            throw new CustomException(ErrorCodes.BAD_REQUEST);
+            log.error(e.getMessage());
+            throw new CustomException(ErrorCodes.RSS_CONVERSION_ERROR);
         }
     }
 }
