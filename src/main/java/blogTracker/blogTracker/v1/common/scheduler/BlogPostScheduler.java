@@ -24,7 +24,7 @@ public class BlogPostScheduler {
     private final CheckDateRepository checkDateRepository;
 
 
-    @Scheduled(cron = "0 13 13 * * *")
+    @Scheduled(cron = "0 20 16 * * *")
     public void checkForBlogPosts() {
         LocalDate today = LocalDate.now();
         log.info("Scheduler started for date: {}", today);
