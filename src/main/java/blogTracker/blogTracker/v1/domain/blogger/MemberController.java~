@@ -1,0 +1,30 @@
+package blogTracker.blogTracker.v1.domain.member;
+
+import blogTracker.blogTracker.v1.common.response.ResultData;
+import blogTracker.blogTracker.v1.domain.member.service.MemberService;
+import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Slf4j
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/member")
+public class MemberController {
+    private final MemberService memberService;
+
+    @PostMapping("/")
+    @Operation(operationId = "blogerTracker", summary = "블로거 추가", description = """
+            __블로거 정보를 추가하는 간단한 API 입니다.__
+            <br>
+            __아주 간단한... 정보만 받고 다른 정보를 리턴하지는 않습니다.__
+            """)
+    public ResultData<String> addBloger(
+            
+    ) {
+        return new ResultData<>("", "");
+    }
+}

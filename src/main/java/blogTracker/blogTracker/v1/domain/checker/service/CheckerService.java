@@ -1,4 +1,4 @@
-package blogTracker.blogTracker.v1.domain.blogger.service;
+package blogTracker.blogTracker.v1.domain.checker.service;
 
 import blogTracker.blogTracker.v1.common.enums.ErrorCodes;
 import blogTracker.blogTracker.v1.common.exception.CustomException;
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class BlogService {
+public class CheckerService {
     private final WebClient webClient;
 
     public Mono<Boolean> checkRecentPosts(String blogUrl) {

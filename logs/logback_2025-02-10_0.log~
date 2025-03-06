@@ -41,15 +41,15 @@
 2025-02-10 22:38:00.764 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
 2025-02-10 22:38:00.766 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67aa00ca3db0b7137d3d4014, name=토순이, email=dkc3084@gmail.com, blogUrl=https://jam-scribble.tistory.com]
 2025-02-10 22:38:00.767 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://jam-scribble.tistory.com
-2025-02-10 22:38:02.179 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-10 22:38:02.179 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-10 22:38:02.185 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-10 22:38:02.187 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-10 22:38:02.188 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-10 22:38:02.331 [ INFO] [reactor-http-nio-6] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-10T22:38:02, 1일 이내 작성 여부: true
+2025-02-10 22:38:02.331 [ INFO] [reactor-http-nio-6] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-10T22:38:02, 1일 이내 작성 여부: true
 2025-02-10 22:38:02.334 [ INFO] [reactor-http-nio-6] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://jam-scribble.tistory.com: false
 2025-02-10 22:38:02.334 [ INFO] [reactor-http-nio-6] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://jam-scribble.tistory.com: false
 2025-02-10 22:38:02.335 [ INFO] [reactor-http-nio-6] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://jam-scribble.tistory.com
-2025-02-10 22:38:02.396 [ INFO] [reactor-http-nio-7] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-10T22:38:02, 1일 이내 작성 여부: true
+2025-02-10 22:38:02.396 [ INFO] [reactor-http-nio-7] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-10T22:38:02, 1일 이내 작성 여부: true
 2025-02-10 22:38:02.398 [ INFO] [reactor-http-nio-7] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-10 22:38:02.398 [ INFO] [reactor-http-nio-7] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-10 22:38:02.399 [ INFO] [reactor-http-nio-7] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com

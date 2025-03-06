@@ -2,7 +2,7 @@ package blogTracker.blogTracker.v1.common.scheduler;
 
 import blogTracker.blogTracker.v1.common.repository.BloggerRepository;
 import blogTracker.blogTracker.v1.common.repository.CheckDateRepository;
-import blogTracker.blogTracker.v1.domain.blogger.service.BlogService;
+import blogTracker.blogTracker.v1.domain.checker.service.CheckerService;
 import blogTracker.blogTracker.v1.domain.sender.service.SenderService;
 import blogTracker.blogTracker.v1.entity.Blogger;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class BlogPostScheduler {
     private final BloggerRepository bloggerRepository;
-    private final BlogService blogService;
+    private final CheckerService checkerService;
     private final SenderService senderService;
     private final CheckDateRepository checkDateRepository;
 
@@ -96,7 +96,7 @@ public class BlogPostScheduler {
     }
 
     private Mono<Boolean> checkBlogPosts(String blogUrl) {
-        return blogService.checkRecentPosts(blogUrl)
+        return checkerService.checkRecentPosts(blogUrl)
                 .doOnNext(result -> log.info("Check result for {}: {}", blogUrl, result));
     }
 }

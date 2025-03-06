@@ -23,11 +23,11 @@
 2025-02-08 15:54:00.615 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 15:54:00.682 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 15:54:00.684 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 15:54:02.219 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
+2025-02-08 15:54:02.219 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
 2025-02-08 15:54:02.233 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 15:54:02.233 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 15:54:02.234 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 15:54:02.241 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
+2025-02-08 15:54:02.241 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
 2025-02-08 15:54:02.242 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: true
 2025-02-08 15:54:02.242 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: true
 2025-02-08 15:54:05.353 [ERROR] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.sender.service.SenderService - 전송에 실패한 이메일 주소 확인하자 ujmlee0524@gmail.com,  에러메시지 : Authentication failed
@@ -259,11 +259,11 @@ blogTracker.blogTracker.v1.common.exception.CustomException: 잘못된 요청입
 2025-02-08 15:57:00.672 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 15:57:00.725 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 15:57:00.726 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 15:57:01.930 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
+2025-02-08 15:57:01.930 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
 2025-02-08 15:57:01.944 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 15:57:01.944 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 15:57:01.945 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 15:57:01.945 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
+2025-02-08 15:57:01.945 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
 2025-02-08 15:57:01.945 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: true
 2025-02-08 15:57:01.945 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: true
 2025-02-08 15:57:05.050 [ERROR] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.sender.service.SenderService - 전송에 실패한 이메일 주소 확인하자 ujmlee0524@gmail.com,  에러메시지 : Authentication failed
@@ -511,8 +511,8 @@ blogTracker.blogTracker.v1.common.exception.CustomException: 잘못된 요청입
 2025-02-08 16:01:00.695 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 16:01:00.744 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 16:01:00.745 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 16:01:01.969 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
-2025-02-08 16:01:01.978 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
+2025-02-08 16:01:01.969 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
+2025-02-08 16:01:01.978 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
 2025-02-08 16:01:01.982 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: true
 2025-02-08 16:01:01.982 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 16:01:01.983 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: true
@@ -609,8 +609,8 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 16:19:00.685 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 16:19:00.734 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 16:19:00.735 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 16:19:01.949 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
-2025-02-08 16:19:01.939 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
+2025-02-08 16:19:01.949 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T15:54:01, 1일 이내 작성 여부: true
+2025-02-08 16:19:01.939 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-07T12:09:07, 1일 이내 작성 여부: false
 2025-02-08 16:19:01.954 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 16:19:01.954 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: true
 2025-02-08 16:19:01.954 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
@@ -649,11 +649,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 16:22:00.688 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 16:22:00.741 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 16:22:00.742 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 16:22:02.035 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 16:22:02.035 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 16:22:02.048 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 16:22:02.049 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 16:22:02.051 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 16:22:02.154 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 16:22:02.154 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 16:22:02.157 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 16:22:02.157 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 16:22:02.157 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -690,11 +690,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:04:00.738 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:04:00.789 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:04:00.790 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:04:01.940 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:04:01.940 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:04:01.958 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:04:01.960 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:04:01.961 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:04:02.066 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:04:02.066 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:04:02.068 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:04:02.068 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:04:02.068 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -732,11 +732,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:10:00.714 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:10:00.765 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:10:00.767 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:10:01.949 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:10:01.949 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:10:01.967 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:10:01.969 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:10:01.970 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:10:02.120 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:10:02.120 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:10:02.121 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:10:02.121 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:10:02.122 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -776,11 +776,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:14:00.636 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:14:00.683 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:14:00.684 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:14:01.795 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:14:01.795 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:14:01.812 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:14:01.814 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:14:01.814 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:14:01.913 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:14:01.913 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:14:01.915 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:14:01.916 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:14:01.917 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -818,11 +818,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:19:00.619 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:19:00.672 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:19:00.674 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:19:01.899 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:19:01.899 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:19:01.913 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:19:01.915 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:19:01.916 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:19:02.035 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:19:02.035 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:19:02.037 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:19:02.037 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:19:02.037 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -860,11 +860,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:23:00.829 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:23:00.899 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:23:00.901 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:23:02.234 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:23:02.234 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:23:02.242 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:23:02.243 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:23:02.244 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:23:02.466 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:23:02.466 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:23:02.467 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:23:02.467 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:23:02.467 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -902,11 +902,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:28:00.757 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:28:00.820 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:28:00.821 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:28:02.244 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:28:02.244 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:28:02.252 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:28:02.253 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:28:02.253 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:28:02.414 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:28:02.414 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:28:02.415 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:28:02.415 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:28:02.415 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -944,11 +944,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:34:00.679 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:34:00.726 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:34:00.727 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:34:01.856 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:34:01.856 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:34:01.872 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:34:01.874 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:34:01.876 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:34:01.983 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:34:01.983 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:34:01.985 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:34:01.985 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:34:01.985 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -986,11 +986,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:37:00.725 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:37:00.774 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:37:00.775 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:37:01.964 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:37:01.964 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:37:01.981 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:37:01.982 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:37:01.984 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:37:02.084 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:37:02.084 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:37:02.085 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:37:02.085 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:37:02.086 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -1028,11 +1028,11 @@ Caused by: java.nio.channels.InterruptedByTimeoutException: null
 2025-02-08 17:39:00.649 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 17:39:00.716 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 17:39:00.717 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 17:39:01.765 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 17:39:01.765 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 17:39:01.783 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 17:39:01.786 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 17:39:01.787 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 17:39:01.883 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
+2025-02-08 17:39:01.883 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T16:22:01, 1일 이내 작성 여부: true
 2025-02-08 17:39:01.884 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 17:39:01.884 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 17:39:01.885 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -1454,11 +1454,11 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2025-02-08 22:11:00.779 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 22:11:00.830 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 22:11:00.831 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 22:11:02.436 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 22:11:02.436 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 22:11:02.443 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 22:11:02.444 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 22:11:02.445 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 22:11:02.619 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T22:11:02, 13일 이내 작성 여부: true
+2025-02-08 22:11:02.619 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T22:11:02, 13일 이내 작성 여부: true
 2025-02-08 22:11:02.620 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 22:11:02.620 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 22:11:02.620 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
@@ -1496,11 +1496,11 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2025-02-08 22:14:00.981 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://ssddo-story.tistory.com
 2025-02-08 22:14:01.038 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 블로거 도큐먼트 찾기 : Blogger[id=67a57931d146aa49322837ca, name=이승현, email=ujmlee0524@gmail.com, blogUrl=https://velog.io/@ssddo]
 2025-02-08 22:14:01.039 [ INFO] [async-channel-group-0-handler-executor] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - blogger.blogUrl() 확인 : https://velog.io/@ssddo
-2025-02-08 22:14:02.395 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
+2025-02-08 22:14:02.395 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - RSS에서 게시물의 pubDate를 찾을 수 없습니다.
 2025-02-08 22:14:02.403 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://velog.io/@ssddo: false
 2025-02-08 22:14:02.404 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://velog.io/@ssddo: false
 2025-02-08 22:14:02.405 [ INFO] [reactor-http-nio-4] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://velog.io/@ssddo
-2025-02-08 22:14:02.490 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.checker.service.CheckerService - 가장 최신 게시물 작성 시간: 2025-02-08T22:11:02, 13일 이내 작성 여부: true
+2025-02-08 22:14:02.490 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.domain.blogger.service.BlogService - 가장 최신 게시물 작성 시간: 2025-02-08T22:11:02, 13일 이내 작성 여부: true
 2025-02-08 22:14:02.491 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Check result for https://ssddo-story.tistory.com: false
 2025-02-08 22:14:02.491 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - 결과 https://ssddo-story.tistory.com: false
 2025-02-08 22:14:02.491 [ INFO] [reactor-http-nio-5] blogTracker.blogTracker.v1.common.scheduler.BlogPostScheduler - Sending alert for https://ssddo-story.tistory.com
